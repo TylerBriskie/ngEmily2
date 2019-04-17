@@ -1,0 +1,9 @@
+#appHeader{
+  height: 140px;
+  color: $primary-light;
+  background-color: $primary;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
