@@ -1,15 +1,13 @@
-#mainNavBar{
-  color: white;
+#app-main-nav{
   background-color: $color-primary-0;
-  height: 40px;
   .container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    .navbar-nav, .navbar-collapse {
-      background-color: $color-primary-0;
-    }
-
   }
+  .nav-wrapper {
+    color: $color-primary-0;
+  }
+
 }
