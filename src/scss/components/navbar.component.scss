@@ -1,13 +1,30 @@
 #app-main-nav{
   background-color: $color-primary-0;
   .container {
+
+  }
+  .nav-wrapper {
+    color: $color-primary-0;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: nowrap;
   }
-  .nav-wrapper {
-    color: $color-primary-0;
+  ul{
+    li{
+      margin: 0;
+      a {
+        font-family: $font-secondary;
+        font-size: 20px;
+        @media only screen and (max-width: 800px){
+
+          font-size: 14px;
+
+        }
+      }
+    }
   }
 
 }
+
