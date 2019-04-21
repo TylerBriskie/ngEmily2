@@ -4,9 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './auth/login.component';
-import { RegisterComponent } from './auth/register.component';
 import { AppRoutingModule } from './app-routing.module';
+import {AuthModule} from './auth/auth.module';
 
 
 @NgModule({
@@ -14,11 +13,10 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     HeaderComponent,
     NavbarComponent,
-    LoginComponent,
-    RegisterComponent
   ],
   imports: [
     BrowserModule,
+    AuthModule,
     AppRoutingModule
   ],
   providers: [],
