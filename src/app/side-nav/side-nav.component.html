@@ -1,6 +1,8 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav hide-on-med-and-up"
                fixedInViewport="true"
+               opened="true"
+               (click)="drawer.toggle()"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
@@ -24,5 +26,13 @@
       </button>
     </mat-toolbar>
     <!-- Add Content Here -->
+    <a routerLink="/">
+      <img height="40" alt="Emily Lutts Fitness Logo" src="../../assets/EmilyLogoWhite.svg">
+    </a>
+    <a routerLink = "/">
+      <h3 class="header-text">
+        <span>EmilyLutts</span>Fitness
+      </h3>
+    </a>
   </mat-sidenav-content>
 </mat-sidenav-container>
