@@ -1,7 +1,6 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container hide-on-med-and-up">
   <mat-sidenav #drawer class="sidenav hide-on-med-and-up"
                fixedInViewport="true"
-               opened="true"
                (click)="drawer.toggle()"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
