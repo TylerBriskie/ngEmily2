@@ -10,6 +10,9 @@ import {NavbarComponent} from './layout/navbar.component';
 import {BookingModule} from './booking/booking.module';
 import {ProfileModule} from './profile/profile.module';
 import {HomeModule} from './home/home.module';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -17,15 +20,22 @@ import {HomeModule} from './home/home.module';
     AppComponent,
     HeaderComponent,
     NavbarComponent,
+    SideNavComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     BookingModule,
     ProfileModule,
     HomeModule,
     LayoutModule,
     AuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
