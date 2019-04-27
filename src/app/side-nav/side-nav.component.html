@@ -13,14 +13,14 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="hide-on-med-and-up">
-    <mat-toolbar color="primary">
+    <mat-toolbar>
       <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon class="hamburger-icon" aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
     </mat-toolbar>
     <!-- Add Content Here -->
