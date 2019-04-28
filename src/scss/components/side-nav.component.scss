@@ -12,7 +12,9 @@
   .sidenav .mat-toolbar {
     background: $color-primary-1;
   }
-
+  .mat-toolbar {
+    background: none;
+  }
   .mat-toolbar.mat-primary {
       position: sticky;
       top: 0;

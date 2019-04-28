@@ -11,8 +11,14 @@
     justify-content: center;
     flex-wrap: nowrap;
   }
+
   ul{
+    .nav-submenu {
+      color: #ff0033;
+      outline: red solid 2px;
+    }
     li{
+
       margin: 0 30px;
       a {
         font-family: $font-secondary;

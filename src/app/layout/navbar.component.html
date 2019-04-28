@@ -5,6 +5,11 @@
       <li><a routerLink="dance">Dance Instruction</a></li>
       <li><a routerLink="pole">Pole Fitness</a></li>
       <li><a routerLink="booking">Book A Session</a></li>
+      <li><a [matMenuTriggerFor]="appMenu">Account</a></li>
+      <mat-menu #appMenu="matMenu" class="nav-submenu">
+        <a routerLink="login" mat-menu-item>Login</a>
+        <a routerLink="register" mat-menu-item>Sign Up</a>
+      </mat-menu>
     </ul>
   </div>
 </nav>

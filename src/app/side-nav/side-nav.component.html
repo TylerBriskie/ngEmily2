@@ -1,16 +1,21 @@
 <mat-sidenav-container class="sidenav-container hide-on-med-and-up">
   <mat-sidenav #drawer class="sidenav hide-on-med-and-up"
                fixedInViewport="true"
-               (click)="drawer.toggle()"
+
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="training">Personal Training</a>
-      <a mat-list-item routerLink="dance">Dance Instruction</a>
-      <a mat-list-item routerLink="pole">Pole Fitness</a>
-      <a mat-list-item routerLink="booking">Book A Session</a>
+      <a mat-list-item routerLink="dance"(click)="drawer.toggle()">Dance Instruction</a>
+      <a mat-list-item routerLink="pole" (click)="drawer.toggle()">Pole Fitness</a>
+      <a mat-list-item routerLink="booking" (click)="drawer.toggle()">Book A Session</a>
+      <a mat-list-item [matMenuTriggerFor]="appMenu">Account</a>
+      <mat-menu #appMenu="matMenu" class="nav-submenu">
+        <a routerLink="login" mat-menu-item (click)="drawer.toggle()">Login</a>
+        <a routerLink="register" mat-menu-item (click)="drawer.toggle()">Sign Up</a>
+      </mat-menu>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="hide-on-med-and-up">
