@@ -9,6 +9,7 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('*robot noises* INITIATING. LOGIN. SEQUENCE.  ENTER USER NAME.');
   }
 
 }
