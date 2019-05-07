@@ -6,13 +6,13 @@
   <form class="col s12">
     <div class="row">
       <div class="input-field col s12">
-        <input [(ngModel)]="registerUserData.email" name="email" type="email" class="validate">
+        <input [(ngModel)]="registerClientData.email" name="email" type="email" class="validate">
         <label for="">Email</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input [(ngModel)]="registerUserData.password"
+        <input [(ngModel)]="registerClientData.password"
                id="password"
                name="password"
                type="password"
@@ -25,7 +25,7 @@
     <div class="form-buttons">
       <button class="btn waves-effect waves-light" type="reset" name="action">clear
       </button>
-      <button (click)="registerUser()" class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <button (click)="registerClient()" class="btn waves-effect waves-light" type="submit" name="action">Submit
         <i class="material-icons right">send</i>
       </button>
     </div>
