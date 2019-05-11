@@ -7,7 +7,7 @@ import { HttpClient } from "@angular/common/http";
 export class AuthService {
   private _registerUrl = "http://localhost:1337/clients";
   private _loginUrl = "http://localhost:1337/login";
-  private _getClientInfo = "http://localhost:1337/clients/";
+  private _getClientInfo = "http://localhost:1337/clients/getLoggedIn";
   constructor(private http: HttpClient) { }
 
   registerClient(client){
@@ -18,8 +18,8 @@ export class AuthService {
     return this.http.post<any>(this._loginUrl, client);
   }
 
-  getClientInfo(client){
-    return this.http.get<any>(this._getClientInfo + client.id);
+  getClientInfo(){
+    return this.http.get<any>(this._getClientInfo);
   }
 
   loggedIn() {
