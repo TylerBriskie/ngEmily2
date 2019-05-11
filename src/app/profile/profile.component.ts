@@ -16,7 +16,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this._auth.getClientInfo()
       .subscribe(
-        res => this.client = res,
+        res => {
+          console.log(res);
+          this.client = res
+        },
         err =>  {
           if (err instanceof HttpErrorResponse){
             console.log('error: ', err);
