@@ -21,4 +21,8 @@ export class AuthService {
   getClientInfo(client){
     return this.http.get<any>(this._getClientInfo + client.id);
   }
+
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
 }

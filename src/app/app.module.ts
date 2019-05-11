@@ -21,6 +21,7 @@ import {
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthService} from "./services/auth.service";
+import {AuthGuard} from "./auth/auth.guard";
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import {AuthService} from "./services/auth.service";
     MatListModule,
     MatMenuModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
