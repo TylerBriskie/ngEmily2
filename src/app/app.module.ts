@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http/'
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,7 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthService} from "./services/auth.service";
 import {AuthGuard} from "./auth/auth.guard";
+import {TokenInterceptorService} from "./services/token-interceptor.service";
 
 
 @NgModule({
@@ -47,7 +49,11 @@ import {AuthGuard} from "./auth/auth.guard";
     MatListModule,
     MatMenuModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
