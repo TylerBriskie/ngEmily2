@@ -7,10 +7,10 @@
       <li><a routerLink="booking">Book A Session</a></li>
       <li><a [matMenuTriggerFor]="appMenu">Account</a></li>
       <mat-menu #appMenu="matMenu" class="nav-submenu">
-        <a routerLink="login" mat-menu-item>Login</a>
-        <a routerLink="register" mat-menu-item>Sign Up</a>
-        <a routerLink="profile" mat-menu-item>Profile</a>
-        <a mat-menu-item>Logout</a>
+        <a *ngIf="!_authService.loggedIn()" routerLink="login" mat-menu-item>Login</a>
+        <a *ngIf="!_authService.loggedIn()" routerLink="register" mat-menu-item>Sign Up</a>
+        <a *ngIf="_authService.loggedIn()" routerLink="profile" mat-menu-item>Profile</a>
+        <a *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()" mat-menu-item>Logout</a>
       </mat-menu>
 
     </ul>
