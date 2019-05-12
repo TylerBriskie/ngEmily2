@@ -10,26 +10,28 @@
   </div>
   <div class="edit-profile-row">
     <p>Password</p>
-    <p>*********#################**</p>
+    <p>******</p>
     <button class="btn profile-form-btn" (click)="updatePassword()">Update</button>
   </div>
   <h5>Personal Info</h5>
   <hr>
-  <form>
+  <form >
     <div class="row">
       <div class="input-field col s6">
       <input [(ngModel)]="client.firstName"
              id="firstName"
              name="firstName"
+             placeholder="First Name"
              type="text">
-      <label for="firstName">First Name</label>
+      <label for="firstName" class="active">First Name</label>
       </div>
       <div class="input-field col s6">
         <input [(ngModel)]="client.lastName"
                id="lastName"
                name="lastName"
+               placeholder="Last Name"
                type="text">
-        <label for="lastName">Last Name</label>
+        <label for="lastName" class="active">Last Name</label>
       </div>
     </div>
     <div class="row">
@@ -38,21 +40,26 @@
                id="birthDate"
                name="birthDate"
                placeholder="MM/DD/YYYY"
-               type="text">
-        <label for="birthDate">Birth Date</label>
+               type="text" >
+        <label for="birthDate" class="active">Birth Date</label>
       </div>
       <div class="input-field col s2">
         <input [(ngModel)]="client.heightFeet"
                id="heightFeet"
                name="heightFeet"
                placeholder="feet"
+               min="3"
+               max="7"
+               class="validate"
                type="text">
-        <label for="heightFeet">Height</label>
+        <label for="heightFeet"class="active">Height</label>
       </div>
       <div class="input-field col s2">
         <input [(ngModel)]="client.heightInches"
                id="heightInches"
                name="heightInches"
+               class="validate"
+               max="11"
                placeholder="inches"
                type="text">
       </div>
@@ -62,22 +69,22 @@
              name="weight"
              placeholder="lbs"
              type="text">
-      <label for="weight">Weight</label>
+      <label for="weight" class="active">Weight</label>
     </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
         <textarea [(ngModel)]="client.conditions"
                   id="conditions"
+                  name="condition"
                   class="materialize-textarea"
                   placeholder="diabetes, irregular heart beat, etc."
         ></textarea>
-        <label for="conditions">Please list any health conditions you may have.</label>
+        <label for="conditions" class="active">Please list any health conditions you may have.</label>
       </div>
     </div>
     <div class="form-buttons">
       <button (click)="updatePersonalInfo()" class="btn waves-effect waves-light" type="submit" name="action">Update
-        <i class="material-icons right">send</i>
       </button>
     </div>
   </form>

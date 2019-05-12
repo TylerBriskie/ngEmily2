@@ -6,14 +6,14 @@ import { Router } from "@angular/router";
   providedIn: 'root'
 })
 export class AuthService {
-  private _registerUrl = "http://localhost:1337/clients";
+  private _clientUrl = "http://localhost:1337/clients/";
   private _loginUrl = "http://localhost:1337/login";
   private _getClientInfo = "http://localhost:1337/clients/getLoggedIn";
   constructor(private http: HttpClient,
               private _router: Router) { }
 
   registerClient(client){
-    return this.http.post<any>(this._registerUrl, client)
+    return this.http.post<any>(this._clientUrl, client)
   }
 
   loginClient(client){
@@ -22,6 +22,10 @@ export class AuthService {
 
   getClientInfo(){
     return this.http.get<any>(this._getClientInfo);
+  }
+
+  updatePersonalInfo(info){
+    return this.http.post<any>(this._clientUrl + info._id + '/updatePersonalInfo', info);
   }
 
   loggedIn() {
