@@ -29,4 +29,14 @@ export class ProfileComponent implements OnInit {
       )
   }
 
+  updateEmail() {
+    event.preventDefault();
+    console.log('updating email address');
+  }
+
+  updatePassword(){
+    event.preventDefault();
+    console.log('updating password');
+  }
+
 }
