@@ -1,5 +1,6 @@
 @import 'variables';
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './theme';
 @import './components/shared';
 @import './components/app.component';
 @import './components/header.component';

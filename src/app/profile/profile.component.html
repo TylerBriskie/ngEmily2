@@ -11,12 +11,6 @@
   <div *ngIf="isUpdatingEmail">
     <form>
       <div class="row">
-        <!--<div class="input-field col s6 m4">-->
-          <!--<input [(ngModel)]="client.email"-->
-                 <!--id="currentEmail"-->
-                 <!--name="currentEmail" disabled>-->
-          <!--<label for="currentEmail" class="active">Current Email</label>-->
-        <!--</div>-->
         <mat-form-field class="col s12 m6 l4">
           <input matInput placeholder="Current Email" disabled value="{{client.email}}">
         </mat-form-field>
