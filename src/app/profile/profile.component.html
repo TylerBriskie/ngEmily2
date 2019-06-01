@@ -5,12 +5,32 @@
   <hr>
   <div class="edit-profile-row">
     <p>Email</p>
-    <p>{{client.email}}</p>
+    <p *ngIf="!isUpdatingEmail">{{client.email}}</p>
     <button *ngIf="!isUpdatingEmail" [disabled]="isUpdatingPassword" class="btn profile-form-btn" (click)="updateEmail()">Update</button>
-    <button *ngIf="isUpdatingEmail" [disabled]="isUpdatingPassword" class="btn profile-form-btn" (click)="cancelUpdate()">Cancel</button>
   </div>
   <div *ngIf="isUpdatingEmail">
+    <form>
+      <div class="row">
+        <div class="input-field col s6">
+          <input [(ngModel)]="client.email"
+                 id="currentEmail"
+                 name="currentEmail" disabled>
+          <label for="currentEmail" class="active">Current Email</label>
+        </div>
+        <div class="input-field col s6">
+          <input [(ngModel)]="newEmail"
+                 id="newEmail"
+                 name="newEmail"
+                 type="email">
+          <label for="newEmail" class="active">New Email</label>
+        </div>
 
+        <div *ngIf="isUpdatingEmail" class="right">
+          <button  [disabled]="isUpdatingPassword" class="btn profile-form-btn" (click)="cancelUpdate()">Cancel</button>
+          <button class="btn profile-form=btn" (click)="submitUpdatePassword()">Submit</button>
+        </div>
+      </div>
+    </form>
   </div>
   <div class="edit-profile-row">
     <p>Password</p>

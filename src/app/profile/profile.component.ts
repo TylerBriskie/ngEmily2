@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import { MatSnackBar} from "@angular/material";
-import { MatDialog} from '@angular/material/dialog';
 import {HttpErrorResponse} from "@angular/common/http";
 import { Router } from '@angular/router';
 import * as moment from 'moment';
@@ -29,8 +28,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private _auth: AuthService,
               private _router: Router,
-              private _snackBar: MatSnackBar,
-              private _dialog: MatDialog,) { }
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this._auth.getClientInfo()
@@ -55,7 +53,6 @@ export class ProfileComponent implements OnInit {
   updateEmail() {
     event.preventDefault();
     this.isUpdatingEmail = true;
-    const dialogRef = this._dialog.open()
   }
 
   cancelUpdate(){
