@@ -20,24 +20,25 @@ export class ProfileComponent implements OnInit {
     heightFeet: String,
     heightInches: String,
     weight: String,
+    email: String,
   };
-  currentPassword = '';
-  newPassword = '';
-  newPasswordConfirm = '';
+  // currentPassword = '';
+  // newPassword = '';
+  // newPasswordConfirm = '';
   isLoaded = false;
   isUpdatingEmail = false;
   isUpdatingPassword = false;
-  newEmail = '';
+  // newEmail = '';
 
   constructor(private _auth: AuthService,
               private _router: Router,
               private _snackBar: MatSnackBar) { }
 
-  updateEmailForm = new FormControl('', [
-      Validators.required,
-      Validators.email,
-  ]);
-  emailMatcher = new EmailErrorStateMatcher();
+  // updateEmailForm = new FormControl('', [
+  //     Validators.required,
+  //     Validators.email,
+  // ]);
+  // emailMatcher = new EmailErrorStateMatcher();
 
   ngOnInit() {
     this._auth.getClientInfo()
@@ -64,25 +65,25 @@ export class ProfileComponent implements OnInit {
     this.isUpdatingEmail = true;
   }
 
-  submitUpdateEmail(){
-    event.preventDefault();
-    alert('the email you chose was ' + this.newEmail);
-  }
+  // submitUpdateEmail(){
+  //   event.preventDefault();
+  //   alert('the email you chose was ' + this.newEmail);
+  // }
 
   updatePassword(){
     event.preventDefault();
     this.isUpdatingPassword = true;
   }
 
-  submitUpdatePassword(){
-    event.preventDefault();
-    if (this.newPassword.length < 8){
-      this._snackBar.open('Password Must Be 8 Characters', "OK", {duration: 2500});
-    }
-    if (this.newPassword === this.newPasswordConfirm){
-      this._snackBar.open('Passwords Match', "OK", {duration: 2500});
-    }
-  }
+  // submitUpdatePassword(){
+  //   event.preventDefault();
+  //   if (this.newPassword.length < 8){
+  //     this._snackBar.open('Password Must Be 8 Characters', "OK", {duration: 2500});
+  //   }
+  //   if (this.newPassword === this.newPasswordConfirm){
+  //     this._snackBar.open('Passwords Match', "OK", {duration: 2500});
+  //   }
+  // }
 
   cancelUpdate(){
     event.preventDefault();
@@ -123,9 +124,3 @@ export class ProfileComponent implements OnInit {
 
 }
 
-export class EmailErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}

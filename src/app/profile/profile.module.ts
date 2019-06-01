@@ -7,9 +7,11 @@ import {MatInputModule} from "@angular/material";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ProfileRoutingModule} from "./profile-routing.module";
 import { ProfileComponent } from './profile.component';
+import { UpdateEmailComponent} from "./update-email.component";
+import { UpdatePasswordComponent} from "./update-password.component";
 
 @NgModule({
-  declarations: [ProfileComponent],
+  declarations: [ProfileComponent, UpdateEmailComponent, UpdatePasswordComponent],
   imports: [
     ProfileRoutingModule,
     FormsModule,
