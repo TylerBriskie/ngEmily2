@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import { MatSnackBar} from "@angular/material";
+import { MatDialog} from '@angular/material/dialog';
 import {HttpErrorResponse} from "@angular/common/http";
 import { Router } from '@angular/router';
 import * as moment from 'moment';
@@ -11,11 +12,25 @@ import * as moment from 'moment';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  client = {};
+  client = {
+    firstName: String,
+    lastName: String,
+    birthDate: String,
+    heightFeet: String,
+    heightInches: String,
+    weight: String,
+  };
+  currentPassword = '';
+  newPassword = '';
+  newPasswordConfirm = '';
   isLoaded = false;
+  isUpdatingEmail = false;
+  isUpdatingPassword = false;
+
   constructor(private _auth: AuthService,
               private _router: Router,
-              private _snackBar: MatSnackBar) { }
+              private _snackBar: MatSnackBar,
+              private _dialog: MatDialog,) { }
 
   ngOnInit() {
     this._auth.getClientInfo()
@@ -31,7 +46,7 @@ export class ProfileComponent implements OnInit {
             this._router.navigate(['/login']);
           }
         }, () => {
-          console.log('finished loading')
+          console.log('finished loading');
           this.isLoaded = true;
         }
       )
@@ -39,12 +54,32 @@ export class ProfileComponent implements OnInit {
 
   updateEmail() {
     event.preventDefault();
-    console.log('updating email address');
+    this.isUpdatingEmail = true;
+    const dialogRef = this._dialog.open()
+  }
+
+  cancelUpdate(){
+    event.preventDefault();
+    this.isUpdatingEmail = false;
+    this.isUpdatingPassword = false;
+    this.currentPassword = '';
+    this.newPassword = '';
+    this.newPasswordConfirm = '';
   }
 
   updatePassword(){
     event.preventDefault();
-    console.log('updating password');
+    this.isUpdatingPassword = true;
+  }
+
+  submitUpdatePassword(){
+    event.preventDefault();
+    if (this.newPassword.length < 8){
+      this._snackBar.open('Password Must Be 8 Characters', "OK", {duration: 2500});
+    }
+    if (this.newPassword === this.newPasswordConfirm){
+      this._snackBar.open('Passwords Match', "OK", {duration: 2500});
+    }
   }
 
   updatePersonalInfo(){
@@ -53,7 +88,8 @@ export class ProfileComponent implements OnInit {
       duration: 3500,
     });
     let clientInfo = {...this.client};
-    if (clientInfo.heightInches != 0){
+    if (clientInfo.heightInches != "0"){
+      console.log('removing  leading  zeros');
       clientInfo.heightInches = clientInfo.heightInches.replace(/^0+/, '');
     }
     clientInfo.heightFeet = clientInfo.heightFeet.replace(/^0+/,'');
