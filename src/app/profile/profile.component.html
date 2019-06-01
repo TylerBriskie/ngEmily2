@@ -16,8 +16,6 @@
     <p>Password</p>
     <p *ngIf="!isUpdatingPassword">******</p>
     <button *ngIf="!isUpdatingPassword" [disabled]="isUpdatingEmail" class="btn profile-form-btn" (click)="updatePassword()">Update</button>
-    <button *ngIf="isUpdatingPassword" [disabled]="isUpdatingEmail" class="btn profile-form-btn" (click)="cancelUpdate()">Cancel</button>
-    <button *ngIf="isUpdatingPassword" class="btn profile-form=btn" (click)="submitUpdatePassword()">Submit</button>
   </div>
   <div *ngIf="isUpdatingPassword">
     <form>
@@ -43,7 +41,15 @@
                  type="password">
           <label for="newPassword" class="active">Confirm New Password</label>
         </div>
+        <div *ngIf="isUpdatingPassword" class="right">
+          <button [disabled]="isUpdatingEmail" class="btn profile-form-btn" (click)="cancelUpdate()">Cancel</button>
+          <button class="btn profile-form=btn" (click)="submitUpdatePassword()">Submit</button>
+        </div>
       </div>
+
+
+
+
     </form>
   </div>
 
