@@ -13,34 +13,14 @@
                      [currentEmail]="client.email">
   </update-email-form>
 
-  <!--<div *ngIf="isUpdatingEmail">-->
-    <!--<form>-->
-      <!--<div class="row">-->
-        <!--<mat-form-field class="col s12 m6 l4">-->
-          <!--<input matInput placeholder="Current Email" disabled value="{{client.email}}">-->
-        <!--</mat-form-field>-->
-        <!--<mat-form-field class="col s6 m4">-->
-          <!--<input matInput placeholder="New Email" [formControl]="updateEmailForm"-->
-                 <!--[errorStateMatcher]="emailMatcher">-->
-          <!--<mat-error *ngIf="updateEmailForm.hasError('email') && !updateEmailForm.hasError('required')">-->
-            <!--Please enter a valid email address-->
-          <!--</mat-error>-->
-        <!--</mat-form-field>-->
-        <!--<div *ngIf="isUpdatingEmail" class="right">-->
-          <!--<button  [disabled]="isUpdatingPassword" class="btn profile-form-btn" (click)="cancelUpdate()">Cancel</button>-->
-          <!--<button class="btn profile-form=btn" (click)="submitUpdateEmail()">Submit</button>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</form>-->
-
-  <div class="edit-profile-row">
+  <div *ngIf="!isUpdatingEmail"class="edit-profile-row">
     <p>Password</p>
     <p *ngIf="!isUpdatingPassword">******</p>
     <button *ngIf="!isUpdatingPassword" [disabled]="isUpdatingEmail" class="btn profile-form-btn" (click)="updatePassword()">Update</button>
   </div>
-  <div *ngIf="isUpdatingPassword">
-
-  </div>
+  <update-password-form *ngIf="isUpdatingPassword"
+                        (cancel)="cancelUpdate()">
+  </update-password-form>
   <div *ngIf="!isUpdatingPassword && !isUpdatingEmail">
     <h5>Personal Info</h5>
     <hr>
