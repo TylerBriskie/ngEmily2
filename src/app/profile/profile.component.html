@@ -11,21 +11,22 @@
   <div *ngIf="isUpdatingEmail">
     <form>
       <div class="row">
-        <div class="input-field col s6">
-          <input [(ngModel)]="client.email"
-                 id="currentEmail"
-                 name="currentEmail" disabled>
-          <label for="currentEmail" class="active">Current Email</label>
-        </div>
-        <div class="input-field col s6">
-          <input [(ngModel)]="newEmail"
-                 id="newEmail"
-                 class="validate"
-                 name="newEmail"
-                 type="email">
-          <label for="newEmail" class="active validate">New Email</label>
-        </div>
-
+        <!--<div class="input-field col s6 m4">-->
+          <!--<input [(ngModel)]="client.email"-->
+                 <!--id="currentEmail"-->
+                 <!--name="currentEmail" disabled>-->
+          <!--<label for="currentEmail" class="active">Current Email</label>-->
+        <!--</div>-->
+        <mat-form-field class="col s12 m6 l4">
+          <input matInput placeholder="Current Email" disabled value="{{client.email}}">
+        </mat-form-field>
+        <mat-form-field class="col s6 m4">
+          <input matInput placeholder="New Email" [formControl]="updateEmailForm"
+                 [errorStateMatcher]="emailMatcher">
+          <mat-error *ngIf="updateEmailForm.hasError('email') && !updateEmailForm.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
         <div *ngIf="isUpdatingEmail" class="right">
           <button  [disabled]="isUpdatingPassword" class="btn profile-form-btn" (click)="cancelUpdate()">Cancel</button>
           <button class="btn profile-form=btn" (click)="submitUpdateEmail()">Submit</button>
@@ -111,7 +112,6 @@
                placeholder="feet"
                min="3"
                max="7"
-               class="validate"
                type="text">
         <label for="heightFeet"class="active">Height</label>
       </div>
@@ -119,7 +119,6 @@
         <input [(ngModel)]="client.heightInches"
                id="heightInches"
                name="heightInches"
-               class="validate"
                max="11"
                placeholder="inches"
                type="text">

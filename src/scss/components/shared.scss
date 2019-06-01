@@ -3,16 +3,23 @@ form {
   .input-field label {
     color: $color-primary-2;
   }
-
-  /* label focus color */
-  .input-field input[type=text]:focus + label {
-    color: #FFF;
+  input:not([type]):focus:not([readonly]), input:not([type]), input:not([type]):disabled{
+    box-shadow: none!important;
+    border-bottom: none!important;
+    margin:0;
   }
-
+  /* label focus color */
+  .input-field input[type=email]:focus + label,
+  .input-field input[type=password]:focus + label,
+  .input-field input[type=text]:focus + label{
+    color: $color-primary-0;
+  }
   /* label underline focus color */
-  .input-field input:focus, input.valid {
+  .input-field input[type=email]:focus,
+  .input-field input[type=password]:focus,
+  .input-field input[type=text]:focus{
     border-bottom: 1px solid $color-primary-0;
-    box-shadow: 0 1px 0 0 $color-primary-2;
+    box-shadow: 0 1px 0 0 $color-primary-0;
   }
 
   /* valid color */
@@ -28,5 +35,8 @@ form {
   }
   .btn {
     background-color: $color-primary-0;
+  }
+  .btn:hover {
+    background-color:$color-primary-1;
   }
 }

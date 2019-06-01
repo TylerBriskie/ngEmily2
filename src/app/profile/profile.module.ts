@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import {FormsModule} from "@angular/forms";
 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import {MatInputModule} from "@angular/material";
+import {ReactiveFormsModule} from "@angular/forms";
 import {ProfileRoutingModule} from "./profile-routing.module";
 import { ProfileComponent } from './profile.component';
 
@@ -13,6 +14,8 @@ import { ProfileComponent } from './profile.component';
     ProfileRoutingModule,
     FormsModule,
     MatSnackBarModule,
+    ReactiveFormsModule,
+    MatInputModule,
     CommonModule
   ]
 })

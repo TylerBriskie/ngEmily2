@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import { MatSnackBar} from "@angular/material";
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
 import {HttpErrorResponse} from "@angular/common/http";
 import { Router } from '@angular/router';
 import * as moment from 'moment';
@@ -30,6 +32,12 @@ export class ProfileComponent implements OnInit {
   constructor(private _auth: AuthService,
               private _router: Router,
               private _snackBar: MatSnackBar) { }
+
+  updateEmailForm = new FormControl('', [
+      Validators.required,
+      Validators.email,
+  ]);
+  emailMatcher = new EmailErrorStateMatcher();
 
   ngOnInit() {
     this._auth.getClientInfo()
@@ -113,4 +121,11 @@ export class ProfileComponent implements OnInit {
         });
   }
 
+}
+
+export class EmailErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
 }
