@@ -20,14 +20,15 @@
         <div class="input-field col s6">
           <input [(ngModel)]="newEmail"
                  id="newEmail"
+                 class="validate"
                  name="newEmail"
                  type="email">
-          <label for="newEmail" class="active">New Email</label>
+          <label for="newEmail" class="active validate">New Email</label>
         </div>
 
         <div *ngIf="isUpdatingEmail" class="right">
           <button  [disabled]="isUpdatingPassword" class="btn profile-form-btn" (click)="cancelUpdate()">Cancel</button>
-          <button class="btn profile-form=btn" (click)="submitUpdatePassword()">Submit</button>
+          <button class="btn profile-form=btn" (click)="submitUpdateEmail()">Submit</button>
         </div>
       </div>
     </form>

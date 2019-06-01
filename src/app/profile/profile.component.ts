@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   isLoaded = false;
   isUpdatingEmail = false;
   isUpdatingPassword = false;
+  newEmail = '';
 
   constructor(private _auth: AuthService,
               private _router: Router,
@@ -55,13 +56,9 @@ export class ProfileComponent implements OnInit {
     this.isUpdatingEmail = true;
   }
 
-  cancelUpdate(){
+  submitUpdateEmail(){
     event.preventDefault();
-    this.isUpdatingEmail = false;
-    this.isUpdatingPassword = false;
-    this.currentPassword = '';
-    this.newPassword = '';
-    this.newPasswordConfirm = '';
+    alert('the email you chose was ' + this.newEmail);
   }
 
   updatePassword(){
@@ -77,6 +74,15 @@ export class ProfileComponent implements OnInit {
     if (this.newPassword === this.newPasswordConfirm){
       this._snackBar.open('Passwords Match', "OK", {duration: 2500});
     }
+  }
+
+  cancelUpdate(){
+    event.preventDefault();
+    this.isUpdatingEmail = false;
+    this.isUpdatingPassword = false;
+    this.currentPassword = '';
+    this.newPassword = '';
+    this.newPasswordConfirm = '';
   }
 
   updatePersonalInfo(){
