@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../services/auth.service";
+import { MatSnackBar} from "@angular/material";
 import {HttpErrorResponse} from "@angular/common/http";
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-profile',
@@ -12,14 +14,16 @@ export class ProfileComponent implements OnInit {
   client = {};
   isLoaded = false;
   constructor(private _auth: AuthService,
-              private _router: Router) { }
+              private _router: Router,
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this._auth.getClientInfo()
       .subscribe(
         res => {
-          console.log(res);
-          this.client = res
+          console.log('got client:',res);
+          this.client = res;
+          this.client.birthDate = moment(res.birthDate).format('MM/DD/YYYY');
         },
         err =>  {
           if (err instanceof HttpErrorResponse){
@@ -44,18 +48,30 @@ export class ProfileComponent implements OnInit {
   }
 
   updatePersonalInfo(){
+    console.log('updating...');
+    this._snackBar.open( "Profile Saved", "OK",{
+      duration: 3500,
+    });
     let clientInfo = {...this.client};
+    if (clientInfo.heightInches != 0){
+      clientInfo.heightInches = clientInfo.heightInches.replace(/^0+/, '');
+    }
+    clientInfo.heightFeet = clientInfo.heightFeet.replace(/^0+/,'');
+    clientInfo.weight = clientInfo.weight.replace(/^0+/,'');
 
-    console.log('posting form - (component) info: ', clientInfo);
-    this._auth.updatePersonalInfo(this.client)
+    this._auth.updatePersonalInfo(clientInfo)
       .subscribe(
         res => {
-
-          // localStorage.setItem('token', res.token);
-          // this._router.navigate(['/profile'])
+          console.log('response', res);
+          this._snackBar.open( "Profile Saved", "Fuck Off",{
+            duration: 3500,
+          });
         }
         ,
-        err => console.log(err));
+        err => console.log(err),
+        () => {
+          console.log('complete');
+        });
   }
 
 }
