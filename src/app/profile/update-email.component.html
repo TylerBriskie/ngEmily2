@@ -1,7 +1,7 @@
 <form>
   <div class="row">
     <mat-form-field class="col s12 m6 l4">
-      <input matInput placeholder="Current Email" disabled value="{{currentEmail}}">
+      <input *ngIf="!isLoading" matInput placeholder="Current Email" disabled value="{{currentEmail}}">
     </mat-form-field>
     <mat-form-field class="col s6 m4">
       <input matInput placeholder="New Email" [formControl]="newEmail">

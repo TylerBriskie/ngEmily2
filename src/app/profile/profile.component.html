@@ -21,10 +21,10 @@
   <update-password-form *ngIf="isUpdatingPassword"
                         (cancel)="cancelUpdate()">
   </update-password-form>
-  <div *ngIf="!isUpdatingPassword && !isUpdatingEmail">
+  <div *ngIf="!isUpdatingPassword && !isUpdatingEmail && isLoaded">
     <h5>Personal Info</h5>
     <hr>
-    <form >
+    <form>
       <div class="row">
         <div class="input-field col s6">
           <input [(ngModel)]="client.firstName"
@@ -92,13 +92,14 @@
       </div>
       <div class="form-buttons">
         <button (click)="updatePersonalInfo()"
-                [disabled]="!update"
                 class="btn waves-effect waves-light"
                 type="submit" name="action">Update
         </button>
       </div>
     </form>
   </div>
-
+  <div *ngIf="!isLoaded" class="progress">
+    <div class="indeterminate"></div>
+  </div>
 </div>
 

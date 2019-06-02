@@ -12,17 +12,6 @@ export class UpdatePasswordComponent {
   @Output() cancel = new EventEmitter();
   matcher = new PasswordErrorStateMatcher();
   passwordRegEx = "(?=^.{8,}$)(?=.*\\d)(?=.*[a-z])(?!.*\\s)[0-9a-z]*$";
-  // currentPassword = new FormControl('', [
-  //   Validators.required,
-  // ]);
-  // newPassword = new FormControl('', [
-  //   Validators.required,
-  //   Validators.pattern(this.passwordRegEx)
-  // ]);
-  // newPasswordConfirm = new FormControl('', [
-  //   Validators.required,
-  //   Validators.pattern(this.passwordRegEx)
-  // ]);
   passwordForm = this.fb.group({
     currentPassword: ['', [Validators.required]],
     newPassword: ['', [Validators.required, Validators.pattern(this.passwordRegEx)]],
@@ -46,14 +35,6 @@ export class UpdatePasswordComponent {
 
   submitUpdatePassword(){
     event.preventDefault();
-    if (this.newPassword.value.length < 8){
-      this._snackBar.open('Password Must Be 8 Characters', "OK", {duration: 2500});
-      return;
-    }
-    if (this.newPassword.value !== this.newPasswordConfirm.value){
-      this._snackBar.open('Passwords Must Match', "OK", {duration: 2500});
-      return;
-    }
   }
 }
 
