@@ -3,7 +3,11 @@ form {
   .input-field label {
     color: $color-primary-2;
   }
-  input:not([type]):focus:not([readonly]), input:not([type]), input:not([type]):disabled{
+  input:not([type]):focus:not([readonly]),
+  input:not([type]),
+  input:not([type]):disabled,
+  input[type=password],
+  input[type=password]:focus:not([readonly]){
     box-shadow: none!important;
     border-bottom: none!important;
     margin:0;

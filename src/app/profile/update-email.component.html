@@ -4,9 +4,8 @@
       <input matInput placeholder="Current Email" disabled value="{{currentEmail}}">
     </mat-form-field>
     <mat-form-field class="col s6 m4">
-      <input matInput placeholder="New Email" [formControl]="newEmail"
-             [errorStateMatcher]="emailMatcher">
-      <mat-error *ngIf="newEmail.hasError('email') && !newEmail.hasError('required')">
+      <input matInput placeholder="New Email" [formControl]="newEmail">
+      <mat-error *ngIf="newEmail.hasError('pattern')">
         Please enter a valid email address
       </mat-error>
     </mat-form-field>

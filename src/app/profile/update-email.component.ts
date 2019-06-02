@@ -14,7 +14,6 @@ export class UpdateEmailComponent {
     Validators.email,
     Validators.pattern(this.emailRegEx),
   ]);
-  emailMatcher = new EmailErrorStateMatcher();
 
   cancelUpdate(){
     this.cancel.emit();
@@ -23,12 +22,5 @@ export class UpdateEmailComponent {
   submitUpdateEmail(){
     event.preventDefault();
     alert('the email you chose was ' + this.newEmail.value);
-  }
-}
-
-export class EmailErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
