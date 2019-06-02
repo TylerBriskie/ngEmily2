@@ -37,4 +37,16 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  #update-password-form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      mat-form-field {
+        width: 50%;
+        @media only screen and (max-width: 600px){
+        width: 100%;
+      }
+      }
+  }
 }
