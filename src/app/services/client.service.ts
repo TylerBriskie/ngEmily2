@@ -16,6 +16,9 @@ export class ClientService {
     return this.http.get<any>(this._getClientInfo);
   }
 
+  updateEmail(postData, id){
+    return this.http.post<any>(this._clientUrl+id+'/updateEmail', postData);
+  }
   updatePassword(postData, id){
     console.log('service...', id)
     return this.http.post<any>(this._clientUrl+ id +'/updatePassword', postData);

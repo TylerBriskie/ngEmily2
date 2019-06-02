@@ -71,7 +71,20 @@ export class ProfileComponent implements OnInit {
         duration: 3500,
       })
     }
-
+  }
+  updateEmailSuccess(updated){
+    console.log(updated);
+    if (updated){
+      this.isUpdatingEmail = false;
+      this.client.email = updated;
+      this._snackBar.open('Email Successfully Changed', "OK", {
+        duration: 3500,
+      })
+    } else {
+      this._snackBar.open("Email already in system", "OK", {
+        duration: 3500,
+      });
+    }
   }
 
   cancelUpdate(){

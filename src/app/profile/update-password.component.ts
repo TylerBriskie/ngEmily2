@@ -15,7 +15,9 @@ export class UpdatePasswordComponent {
   };
   @Output() cancel = new EventEmitter();
   @Output() updateSuccess = new EventEmitter<boolean>();
-  // @Output() updateSuccess = new EventEmitter();
+
+  constructor(private _snackBar: MatSnackBar,
+              private _clientService: ClientService){}
 
   fb = new FormBuilder();
   matcher = new PasswordErrorStateMatcher();
@@ -25,13 +27,6 @@ export class UpdatePasswordComponent {
     newPassword: ['', [Validators.required, Validators.pattern(this.passwordRegEx)]],
     newPasswordConfirm: ['',[Validators.required, Validators.pattern(this.passwordRegEx)]]
   }, {validator: this.checkPasswords});
-
-  constructor(private _snackBar: MatSnackBar,
-              private _router: Router,
-              private _clientService: ClientService
-  ){
-
-  }
 
   cancelUpdate(){
     this.cancel.emit();

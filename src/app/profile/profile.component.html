@@ -12,8 +12,8 @@
   </div>
   <update-email-form *ngIf="isUpdatingEmail"
                      (cancel)="cancelUpdate()"
-                     [client]="client"
-                     [currentEmail]="client.email">
+                     (updateSuccess)="updateEmailSuccess($event)"
+                     [client]="client">
   </update-email-form>
 
   <div *ngIf="!isUpdatingEmail"class="edit-profile-row">

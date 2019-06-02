@@ -1,7 +1,7 @@
 <form id="update-email-form" class="flex-vertical flex-center">
 
     <mat-form-field class="col s12 m6">
-      <input *ngIf="!isLoading" matInput placeholder="Current Email" disabled value="{{currentEmail}}">
+      <input *ngIf="!isLoading" matInput placeholder="Current Email" disabled value="{{client.email}}">
     </mat-form-field>
     <mat-form-field class="col s12 m6">
       <input matInput placeholder="New Email" [formControl]="newEmail">
