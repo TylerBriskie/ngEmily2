@@ -1,10 +1,12 @@
 <div class="container" id="profile-page">
-  <h5>
-    View / Edit Profile
-  </h5>
+  <h5 *ngIf="!isUpdatingEmail && !isUpdatingPassword">View / Edit Profile</h5>
+  <h5 *ngIf="isUpdatingEmail">Update Email</h5>
+  <h5 *ngIf="isUpdatingPassword">Change Password</h5>
+
   <hr>
+
   <div *ngIf="!isUpdatingPassword" class="edit-profile-row">
-    <p>Email</p>
+    <p *ngIf="!isUpdatingEmail">Email</p>
     <p *ngIf="!isUpdatingEmail">{{client.email}}</p>
     <button *ngIf="!isUpdatingEmail" [disabled]="isUpdatingPassword" class="btn profile-form-btn" (click)="updateEmail()">Update</button>
   </div>
@@ -14,7 +16,7 @@
   </update-email-form>
 
   <div *ngIf="!isUpdatingEmail"class="edit-profile-row">
-    <p>Password</p>
+    <p *ngIf="!isUpdatingPassword">Password</p>
     <p *ngIf="!isUpdatingPassword">******</p>
     <button *ngIf="!isUpdatingPassword" [disabled]="isUpdatingEmail" class="btn profile-form-btn" (click)="updatePassword()">Update</button>
   </div>

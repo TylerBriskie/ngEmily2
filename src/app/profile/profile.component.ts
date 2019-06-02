@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import { MatSnackBar} from "@angular/material";
-import {FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {HttpErrorResponse} from "@angular/common/http";
 import { Router } from '@angular/router';
 import * as moment from 'moment';
@@ -64,9 +63,6 @@ export class ProfileComponent implements OnInit {
     event.preventDefault();
     this.isUpdatingEmail = false;
     this.isUpdatingPassword = false;
-    this.currentPassword = '';
-    this.newPassword = '';
-    this.newPasswordConfirm = '';
   }
 
   updatePersonalInfo(){
