@@ -91,7 +91,10 @@
         </div>
       </div>
       <div class="form-buttons">
-        <button (click)="updatePersonalInfo()" class="btn waves-effect waves-light" type="submit" name="action">Update
+        <button (click)="updatePersonalInfo()"
+                [disabled]="!update"
+                class="btn waves-effect waves-light"
+                type="submit" name="action">Update
         </button>
       </div>
     </form>

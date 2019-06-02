@@ -11,7 +11,7 @@
     </mat-form-field>
     <div class="right">
       <button  class="btn profile-form-btn" (click)="this.cancelUpdate()">Cancel</button>
-      <button class="btn profile-form=btn" [disabled]="newEmail.hasError('email') || newEmail.hasError('pattern')"
+      <button class="btn btn-submit" [disabled]="newEmail.hasError('email') || newEmail.hasError('pattern')"
               (click)="submitUpdateEmail()">Submit</button>
     </div>
   </div>

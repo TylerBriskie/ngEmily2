@@ -37,10 +37,10 @@ form {
     border-bottom: 1px solid $color-tertiary-0;
     box-shadow: 0 1px 0 0 #A00;
   }
-  .btn {
-    background-color: $color-primary-0;
+  .btn-submit {
+    background-color: $color-primary-0!important;
   }
-  .btn:hover {
+  .btn-submit:hover {
     background-color:$color-primary-1;
   }
 }
