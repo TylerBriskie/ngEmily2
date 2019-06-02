@@ -24,6 +24,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthService} from "./services/auth.service";
 import {AuthGuard} from "./auth/auth.guard";
 import {TokenInterceptorService} from "./services/token-interceptor.service";
+import {ClientService} from "./services/client.service";
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import {TokenInterceptorService} from "./services/token-interceptor.service";
     MatListModule,
     MatMenuModule
   ],
-  providers: [AuthService, AuthGuard, {
+  providers: [AuthService, ClientService, AuthGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true

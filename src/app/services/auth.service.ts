@@ -20,14 +20,6 @@ export class AuthService {
     return this.http.post<any>(this._loginUrl, client);
   }
 
-  getClientInfo(){
-    return this.http.get<any>(this._getClientInfo);
-  }
-
-  updatePersonalInfo(info){
-    return this.http.post<any>(this._clientUrl + info._id + '/updatePersonalInfo', info);
-  }
-
   loggedIn() {
     return !!localStorage.getItem('token');
   }

@@ -1,6 +1,8 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroupDirective, FormBuilder, NgForm, Validators, FormGroup} from "@angular/forms";
 import {ErrorStateMatcher, MatSnackBar} from "@angular/material";
+import {ClientService} from "../services/client.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'update-password-form',
@@ -8,8 +10,14 @@ import {ErrorStateMatcher, MatSnackBar} from "@angular/material";
 })
 
 export class UpdatePasswordComponent {
-  fb = new FormBuilder();
+  @Input() client: {
+    _id: string;
+  };
   @Output() cancel = new EventEmitter();
+  @Output() updateSuccess = new EventEmitter<boolean>();
+  // @Output() updateSuccess = new EventEmitter();
+
+  fb = new FormBuilder();
   matcher = new PasswordErrorStateMatcher();
   passwordRegEx = "(?=^.{8,}$)(?=.*\\d)(?=.*[a-z])(?!.*\\s)[0-9a-z]*$";
   passwordForm = this.fb.group({
@@ -18,7 +26,10 @@ export class UpdatePasswordComponent {
     newPasswordConfirm: ['',[Validators.required, Validators.pattern(this.passwordRegEx)]]
   }, {validator: this.checkPasswords});
 
-  constructor(private _snackBar: MatSnackBar){
+  constructor(private _snackBar: MatSnackBar,
+              private _router: Router,
+              private _clientService: ClientService
+  ){
 
   }
 
@@ -35,6 +46,22 @@ export class UpdatePasswordComponent {
 
   submitUpdatePassword(){
     event.preventDefault();
+    let postData = {
+      currentPassword: this.passwordForm.get('currentPassword').value,
+      newPassword: this.passwordForm.get('newPassword').value
+    };
+    this._clientService.updatePassword(postData, this.client._id)
+      .subscribe(
+      res => {
+      },
+        err => {
+          console.log('an error occured: code 723047', err);
+          this.updateSuccess.emit(false);
+        },
+        () => {
+          this.updateSuccess.emit(true);
+        }
+      )
   }
 }
 

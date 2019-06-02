@@ -8,6 +8,7 @@ import {ErrorStateMatcher} from "@angular/material";
 })
 export class UpdateEmailComponent {
   @Input() currentEmail: string;
+  @Input() client: object;
   @Output() cancel = new EventEmitter();
   emailRegEx = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   newEmail = new FormControl('', [

@@ -4,6 +4,7 @@ import { MatSnackBar} from "@angular/material";
 import {HttpErrorResponse} from "@angular/common/http";
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import {ClientService} from "../services/client.service";
 
 @Component({
   selector: 'app-profile',
@@ -25,12 +26,13 @@ export class ProfileComponent implements OnInit {
   isUpdatingPassword = false;
 
   constructor(private _auth: AuthService,
+              private _clientService: ClientService,
               private _router: Router,
               private _snackBar: MatSnackBar) { }
 
 
   ngOnInit() {
-    this._auth.getClientInfo()
+    this._clientService.getClientInfo()
       .subscribe(
         res => {
           console.log('got client:',res);
@@ -58,6 +60,19 @@ export class ProfileComponent implements OnInit {
     event.preventDefault();
     this.isUpdatingPassword = true;
   }
+  updatePasswordSuccess(updated){
+    if (updated === true){
+      this.isUpdatingPassword = false;
+      this._snackBar.open( "Password Changed", "OK",{
+        duration: 3500,
+      });
+    } else {
+      this._snackBar.open("Current Password Incorrect", "OK", {
+        duration: 3500,
+      })
+    }
+
+  }
 
   cancelUpdate(){
     event.preventDefault();
@@ -66,29 +81,28 @@ export class ProfileComponent implements OnInit {
   }
 
   updatePersonalInfo(){
-    console.log('updating...');
-    this._snackBar.open( "Profile Saved", "OK",{
-      duration: 3500,
-    });
     let clientInfo = {...this.client};
     if (clientInfo.heightInches != "0"){
-      console.log('removing  leading  zeros');
       clientInfo.heightInches = clientInfo.heightInches.replace(/^0+/, '');
     }
     clientInfo.heightFeet = clientInfo.heightFeet.replace(/^0+/,'');
     clientInfo.weight = clientInfo.weight.replace(/^0+/,'');
 
-    this._auth.updatePersonalInfo(clientInfo)
+    this._clientService.updatePersonalInfo(clientInfo)
       .subscribe(
         res => {
-          console.log('response', res);
-          this._snackBar.open( "Profile Saved", "Fuck Off",{
+
+        },
+        err => {
+          this._snackBar.open("Error Saving Profile", "OK", {
             duration: 3500,
           });
-        }
-        ,
-        err => console.log(err),
+          console.log(err)
+        },
         () => {
+          this._snackBar.open( "Profile Saved", "OK",{
+            duration: 3500,
+          });
           console.log('complete');
         });
   }
