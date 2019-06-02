@@ -65,10 +65,12 @@ export class ProfileComponent implements OnInit {
       this.isUpdatingPassword = false;
       this._snackBar.open( "Password Changed", "OK",{
         duration: 3500,
+        panelClass: ['blue-snackbar']
       });
     } else {
       this._snackBar.open("Current Password Incorrect", "OK", {
         duration: 3500,
+        panelClass: ['red-snackbar']
       })
     }
   }
@@ -79,10 +81,12 @@ export class ProfileComponent implements OnInit {
       this.client.email = updated;
       this._snackBar.open('Email Successfully Changed', "OK", {
         duration: 3500,
+        panelClass: ['blue-snackbar']
       })
     } else {
       this._snackBar.open("Email already in system", "OK", {
         duration: 3500,
+        panelClass: ['red-snackbar']
       });
     }
   }
@@ -109,12 +113,14 @@ export class ProfileComponent implements OnInit {
         err => {
           this._snackBar.open("Error Saving Profile", "OK", {
             duration: 3500,
+            panelClass: ['red-snackbar']
           });
           console.log(err)
         },
         () => {
           this._snackBar.open( "Profile Saved", "OK",{
             duration: 3500,
+            panelClass: ['blue-snackbar']
           });
           console.log('complete');
         });

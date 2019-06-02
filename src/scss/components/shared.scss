@@ -56,3 +56,19 @@ form {
   justify-content: center;
   align-items: center;
 }
+.blue-snackbar {
+  color: $color-primary-4;
+  border: $color-primary-4 solid 2px;
+  background-color: white;
+  span{
+    color: $color-primary-0;
+  }
+}
+.red-snackbar {
+  color: $color-tertiary-4;
+  border: $color-tertiary-4 solid 2px;
+  background-color: white;
+  span {
+    color: $color-tertiary-4;
+  }
+}
